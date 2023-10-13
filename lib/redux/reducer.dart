@@ -1,10 +1,13 @@
+import '../model.dart';
 import 'action.dart';
 import 'app_state.dart';
 
-
 AppState reducer(AppState prev, dynamic action) {
+  if (action is UpdateLoadingAction) {
+    return AppState(prev.images, action.isLoading);
+  }
   if (action is ScrollAction) {
-    return AppState(action.images);
+    return AppState(action.images, prev.isLoading);
   }
   if (action is LikeAction) {
     List<ImageData> newImages = List.from(prev.images);
@@ -16,7 +19,7 @@ AppState reducer(AppState prev, dynamic action) {
             like: !newImages[i].like);
       }
     }
-    return AppState(newImages);
+    return AppState(newImages, prev.isLoading);
   }
   return prev;
 }

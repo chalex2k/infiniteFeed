@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+import '../../model.dart';
+import '../../resources/card_full_screen.dart';
+import '../../resources/common.dart';
 import '../action.dart';
 import '../app_state.dart';
 
@@ -25,15 +28,15 @@ class CardFullScreen extends StatelessWidget {
       ),
       Row(mainAxisAlignment: MainAxisAlignment.start, children: [
         ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+            style: ElevatedButton.styleFrom(backgroundColor: UICardResources.likeBackgroundColor),
             onPressed: () {
               var store = StoreProvider.of<AppState>(context);
               store.dispatch(LikeAction(image));
             },
             child: Icon(
-              image.like ? Icons.favorite : Icons.favorite_outline,
-              color: Colors.red,
-              size: 50.0,
+              image.like ? UICommon.likeEnabledIcon : UICommon.likeDisabledIcon,
+              color: UICommon.likeColorIcon,
+              size: UICommon.likeSizeIcon,
             )),
       ]),
     ]));

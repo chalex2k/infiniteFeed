@@ -1,3 +1,4 @@
+import 'package:first/resources/common.dart';
 import 'package:flutter/material.dart';
 import 'package:first/redux/app_state.dart';
 import 'package:first/redux/reducer.dart';
@@ -18,7 +19,7 @@ class FirstApp extends StatelessWidget {
     return StoreProvider(
       store: store,
       child: const MaterialApp(
-        title: "Flutter redux",
+        title: UICommon.appTitle,
         home: Feed(),
       ),
     );
